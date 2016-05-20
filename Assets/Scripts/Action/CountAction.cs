@@ -1,4 +1,4 @@
-﻿public enum CountType
+﻿public enum CountAction
 {
     Increment,
     Decrement,

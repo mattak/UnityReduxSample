@@ -1,13 +1,21 @@
-﻿public class CountReducer : IReducer<CountType>
+﻿using UnityEngine;
+
+public class CountReducer : MonoBehaviour, IReducer<CountAction>
 {
-    public State Reduce(State state, CountType action)
+    void Start()
+    {
+        var store = Unidux.Instance.GetStore();
+        store.SubscribeReducer(this);
+    }
+
+    public State Reduce(State state, CountAction action)
     {
         switch (action)
         {
-            case CountType.Increment:
+            case CountAction.Increment:
                 state.count += 1;
                 break;
-            case CountType.Decrement:
+            case CountAction.Decrement:
                 state.count -= 1;
                 break;
         }

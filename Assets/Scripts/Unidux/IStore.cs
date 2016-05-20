@@ -6,4 +6,5 @@
     void Dispatch<A>(A action);
     void Update();
     S CreateState();
+    S GetState();
 }

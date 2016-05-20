@@ -48,12 +48,17 @@ public class Store : IStore<State>
 
         foreach (var render in renderList)
         {
-            render.Render(state);
+            render.Render();
         }
     }
 
     public State CreateState()
     {
         return new State();
+    }
+
+    public State GetState()
+    {
+        return state;
     }
 }
