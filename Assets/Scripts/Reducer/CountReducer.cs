@@ -1,17 +1,17 @@
-﻿using Unidux;
+using Unidux;
 
 public static class CountReducer
 {
     public static State Reduce(State state, object action)
     {
-        if (action is CountType)
+        if (action is CountAction)
         {
-            switch ((CountType)action)
+            switch ((CountAction)action)
             {
-                case CountType.Increment:
+                case CountAction.Increment:
                     state.count += 1;
                     break;
-                case CountType.Decrement:
+                case CountAction.Decrement:
                     state.count -= 1;
                     break;
             }
