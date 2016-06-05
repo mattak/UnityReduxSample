@@ -1,4 +1,4 @@
-﻿public interface IReducer<T>
+﻿namespace Unidux
 {
-    State Reduce(State state, T action);
+    public delegate S Reducer<S>(S state, object action) where S : StateBase;
 }

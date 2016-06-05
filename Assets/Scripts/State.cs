@@ -1,6 +1,10 @@
 ﻿// TODO: State is Readonly
-public class State : IState
+
+namespace Unidux
 {
-    public int count;
-    public Todo[] todoList;
+    public class State : StateBase
+    {
+        public int count;
+        public Todo[] todoList;
+    }
 }

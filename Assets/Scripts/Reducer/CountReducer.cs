@@ -1,15 +1,20 @@
-﻿public class CountReducer : IReducer<CountType>
+﻿using Unidux;
+
+public static class CountReducer
 {
-    public State Reduce(State state, CountType action)
+    public static State Reduce(State state, object action)
     {
-        switch (action)
+        if (action is CountType)
         {
-            case CountType.Increment:
-                state.count += 1;
-                break;
-            case CountType.Decrement:
-                state.count -= 1;
-                break;
+            switch ((CountType)action)
+            {
+                case CountType.Increment:
+                    state.count += 1;
+                    break;
+                case CountType.Decrement:
+                    state.count -= 1;
+                    break;
+            }
         }
 
         return state;

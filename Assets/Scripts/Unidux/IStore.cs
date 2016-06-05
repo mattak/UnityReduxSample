@@ -1,9 +1,12 @@
-﻿public interface IStore<S>
+﻿namespace Unidux
 {
-    // TODO: return Subscription
-    void SubscribeRender(IRender render);
-    void SubscribeReducer<T>(IReducer<T> reducer);
-    void Dispatch<A>(A action);
-    void Update();
-    S CreateState();
+    public interface IStore<S> where S : StateBase
+    {
+        // TODO: return Subscription
+        event Render<S> RenderEvent;
+        void AddReducer(Reducer<S> reducer);
+        void RemoveReducer(Reducer<S> reducer);
+        void Dispatch<A>(A action);
+        void Update();
+    }
 }

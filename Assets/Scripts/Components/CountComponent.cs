@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using Unidux;
 
-public class CountComponent : MonoBehaviour, IRender
+public class CountComponent : MonoBehaviour
 {
     public Button countUpButton;
     public Button countDownButton;
     public Text text;
 
-    CountReducer reducer;
-
     void Start()
     {
-        var store = Unidux.Instance.GetStore();
+        var store = Unidux.Unidux.Instance.Store;
         countUpButton.onClick.AddListener(() =>
         {
             Debug.Log("countup");
@@ -24,14 +22,12 @@ public class CountComponent : MonoBehaviour, IRender
             store.Dispatch(CountType.Decrement);
         });
 
-        reducer = new CountReducer();
-        store.SubscribeReducer(reducer);
-        store.SubscribeRender(this);
+        this.gameObject.AddTo(store, Render);
+        this.gameObject.AddTo(store, CountReducer.Reduce);
     }
 
-    public void Render(IState _state)
+    public void Render(State state)
     {
-        var state = _state as State;
         Debug.Log("render: " + state.count);
         text.text = "" + state.count;
     }

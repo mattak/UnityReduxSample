@@ -1,6 +1,6 @@
 ﻿namespace Unidux
 {
-    public interface IState
+    public class StateBase : IState
     {
     }
 }

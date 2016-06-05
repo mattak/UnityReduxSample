@@ -1,4 +1,4 @@
-﻿public interface IRender
+﻿namespace Unidux
 {
-    void Render(IState state);
+    public delegate void Render<S>(S state) where S : StateBase;
 }
